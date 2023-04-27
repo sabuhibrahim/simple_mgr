@@ -18,7 +18,7 @@ def process(source: Cart, target: Cart):
 
 
 if __name__ == "__main__":
-    # extract the values from these variables from the command line options (flags)
+    # extract the values FOR these variables from the command line options (flags)
     # python main.py --source_url http://source.com --source_token SOURCE --target_url http://target.com --target_token TARGET
     source_url = None
     source_token = None
