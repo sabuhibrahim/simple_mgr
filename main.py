@@ -1,17 +1,10 @@
-
-import sys
 from cart import Cart
 from exporter import get_exporter
 from importer import get_importer
-import logging
+from utils import find_logger
 
 
-logger = logging.getLogger(__name__)
-handler = logging.StreamHandler(sys.stdout)
-logger.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
+logger = find_logger(__name__)
 
 
 def process(source: Cart, target: Cart):

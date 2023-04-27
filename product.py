@@ -7,6 +7,9 @@ from typing import Dict, List, Optional
 from constants import OutOfStock, SpecificPriceType
 
 
+"""
+The data classes can be changed and adapted to the needs of the developer and task
+"""
 class WeightUnit(Enum):
     KG = 1
     GR = 2
