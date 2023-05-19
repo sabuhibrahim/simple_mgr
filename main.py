@@ -20,8 +20,8 @@ def process(source: Cart, target: Cart):
 if __name__ == "__main__":
     # extract the values FOR these variables from the command line options (flags)
     # python main.py --source_url http://source.com --source_token SOURCE --target_url http://target.com --target_token TARGET
-    source_url = None
-    source_token = None
+    source_url = "https://0ade3c-2.myshopify.com"
+    source_token = "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"
 
     target_url = None
     target_token = None

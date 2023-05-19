@@ -119,8 +119,8 @@ class Variant:
     specific_prices: List[SpecificPrice]
     images: List[Image]
     attribute_pairs: List[AttributePair]
-    barcode: Barcode = Barcode(ean_13=None, upc=None)
-    weight: Weight = Weight(value=None)
+    barcode: Barcode
+    weight: Weight
 
 
 @dataclass
@@ -141,15 +141,15 @@ class Product:
     images: List[Image]
     sku: Optional[str]
     variants: List[Variant]
-    manufacturers: List[ManufacturerEntity]
+    manufacturers: List[ManufacturerEntity] # vendor
     categories: List[CategoryInfo]
     specific_prices: List[SpecificPrice]
     tags: List[str]
     is_taxable: Optional[bool]
     stock: Stock
-    link_rewrite: Optional[str]
+    # link_rewrite: Optional[str]
     created_date: Optional[datetime]
     updated_date: Optional[datetime]
-    weight: Weight = Weight(value=None)
-    barcode: Barcode = Barcode(ean_13=None, upc=None)
+    weight: Weight
+    barcode: Barcode
 
