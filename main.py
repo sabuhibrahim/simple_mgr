@@ -2,6 +2,8 @@ from cart import Cart
 from exporter import get_exporter
 from importer import get_importer
 from utils import find_logger
+from argparse import ArgumentParser
+
 
 
 logger = find_logger(__name__)
@@ -20,8 +22,15 @@ def process(source: Cart, target: Cart):
 if __name__ == "__main__":
     # extract the values FOR these variables from the command line options (flags)
     # python main.py --source_url http://source.com --source_token SOURCE --target_url http://target.com --target_token TARGET
-    source_url = None
-    source_token = None
+
+    # read args from cmd
+    parser = ArgumentParser()
+    parser.add_argument("--source_url")
+    parser.add_argument("--source_token")
+    args = parser.parse_args()
+
+    source_url = args.source_url
+    source_token = args.source_token
 
     target_url = None
     target_token = None
