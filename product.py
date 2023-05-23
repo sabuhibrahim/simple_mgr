@@ -23,10 +23,10 @@ class Weight:
 
 @dataclass
 class Attribute:
-    id: Optional[str]
     name: str
     position: Optional[str]
-    lang_id: Optional[str]
+    lang_id: Optional[str] = None
+    id: Optional[str] = None
 
 
 @dataclass
@@ -37,10 +37,10 @@ class Stock:
 
 @dataclass
 class AttributeGroup:
-    id: Optional[str]
     name: str
-    lang_id: Optional[str]
     attributes: Dict[str, Attribute]
+    id: Optional[str] = None
+    lang_id: Optional[str] = None
 
     def get_attribute_by(self, identifier: str) -> Attribute:
         return self.attributes[identifier]
@@ -58,17 +58,17 @@ class AttributePair:
 @dataclass
 class Image:
     id: Optional[str]
-    name: Optional[str]
-    position: Optional[str]
     path: str
-    base64_attachment: Optional[str]
+    name: Optional[str] = None
+    position: Optional[str] = None
+    base64_attachment: Optional[str] = None
     is_cover: bool = False
 
 
 @dataclass
 class Barcode:
-    upc: Optional[str]
-    ean_13: Optional[str]
+    upc: Optional[str] = None
+    ean_13: Optional[str] = None
 
     @property
     def value(self):
@@ -77,16 +77,16 @@ class Barcode:
 
 @dataclass
 class SpecificPrice:
-    id: Optional[str]
-    country_id: Optional[str]
-    customer_group_id: Optional[str]
-    customer_id: Optional[str]
-    from_quantity: Optional[int]
     amount_reduction: Optional[Decimal]
-    percent_reduction: Optional[Decimal]
     reduction_type: SpecificPriceType
-    start_date: Optional[datetime]
-    end_date: Optional[datetime]
+    id: Optional[str] = None
+    country_id: Optional[str] = None
+    customer_group_id: Optional[str] = None
+    customer_id: Optional[str] = None
+    from_quantity: Optional[int] = None
+    percent_reduction: Optional[Decimal] = None
+    start_date: Optional[datetime] = None
+    end_date: Optional[datetime] = None
 
 
 @dataclass
@@ -116,9 +116,10 @@ class Variant:
     price: Decimal
     stock: Stock
     sku: Optional[str]
-    specific_prices: List[SpecificPrice]
-    images: List[Image]
-    attribute_pairs: List[AttributePair]
+    is_taxable: Optional[bool] = None
+    specific_prices: List[SpecificPrice] = None
+    images: List[Image] = None
+    attribute_pairs: List[AttributePair] = None
     barcode: Barcode = Barcode(ean_13=None, upc=None)
     weight: Weight = Weight(value=None)
 
@@ -128,28 +129,28 @@ class Product:
     id: str
     name: str
     description: Optional[str]
-    short_description: Optional[str]
-    shop_id: Optional[str]
-    lang_id: Optional[str]
-    meta_title: Optional[str]
-    meta_description: Optional[str]
-    link_rewrite: Optional[str]
     price: Decimal
     cost: Decimal
-    is_active: bool
-    is_virtual: bool
     images: List[Image]
-    sku: Optional[str]
     variants: List[Variant]
-    manufacturers: List[ManufacturerEntity]
-    categories: List[CategoryInfo]
-    specific_prices: List[SpecificPrice]
     tags: List[str]
-    is_taxable: Optional[bool]
     stock: Stock
-    link_rewrite: Optional[str]
-    created_date: Optional[datetime]
-    updated_date: Optional[datetime]
     weight: Weight = Weight(value=None)
     barcode: Barcode = Barcode(ean_13=None, upc=None)
+    manufacturers: List[ManufacturerEntity] = None
+    specific_prices: List[SpecificPrice] = None
+    is_active: bool = None
+    is_virtual: bool = None
+    categories: List[CategoryInfo] = None
+    meta_title: Optional[str] = None
+    meta_description: Optional[str] = None
+    link_rewrite: Optional[str] = None
+    sku: Optional[str] = None
+    is_taxable: Optional[bool] = None
+    link_rewrite: Optional[str] = None
+    created_date: Optional[datetime] = None
+    updated_date: Optional[datetime] = None
+    short_description: Optional[str] = None
+    shop_id: Optional[str] = None
+    lang_id: Optional[str] = None
 
